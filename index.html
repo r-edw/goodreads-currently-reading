@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+   <title>Currently Reading</title>
+ </head>
+ <body>
+     <h1 style="color: blue;">
+        Currently Reading
+     </h1>
+     <section>
+       <p class="data"></p>
+     </section>
+ </body>
+<script>
+  fetch('/shelf/currently_reading')
+    .then((res) => {
+      console.log(res);
+      res.json().then((data) => {
+        document.querySelector('.data').textContent = JSON.stringify(data);
+      })
+    })
+</script>
+</html>
