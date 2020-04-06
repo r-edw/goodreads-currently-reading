@@ -4,19 +4,42 @@
    <title>Currently Reading</title>
  </head>
  <body>
-     <h1 style="color: blue;">
+    <link href="/static/css/main.css" rel="stylesheet" type="text/css">
+     <h1>
         Currently Reading
      </h1>
-     <section>
-       <p class="data"></p>
-     </section>
+     <main>
+       <section class="content-wrapper">
+          <div class="image-column">
+            <img class="book-image"/>
+          </div>
+          <div>
+            <h2 class="title">Title</h2>
+            <h3 class="author"><a>Author</a></h3>
+            <p class="description">Description</p>
+            <div>Meta stuff</div>
+          </div>
+       </section>
+     </main>
+     <footer>
+       Copyright stuff go here
+     </footer>
  </body>
 <script>
   fetch('/shelf/currently_reading')
     .then((res) => {
-      console.log(res);
       res.json().then((data) => {
-        document.querySelector('.data').textContent = JSON.stringify(data);
+        const book = data.message[0].book[0];
+        document.querySelector('.description').innerHTML = book.description[0];
+        document.querySelector('.title').textContent = book.title[0];
+
+        const authorTag = document.querySelector('.author > a');
+        const author = book.authors[0].author[0];
+        authorTag.textContent = author.name[0];
+        authorTag.setAttribute('href', author.link[0]);
+        authorTag.setAttribute('target', '_blank');
+
+        document.querySelector('.book-image').setAttribute('src', book.image_url);
       })
     })
 </script>

@@ -1,5 +1,6 @@
 require('dotenv').config()
 
+const path = require('path');
 const express = require('express');
 const axios = require('axios');
 const parseString = require('xml2js').parseString;
@@ -56,6 +57,8 @@ server.get("/shelf/currently_reading", (req, res) => {
 server.get("/", (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
+
+server.use('/static', express.static(path.join(__dirname, 'public')))
 
 const port = 4000;
 

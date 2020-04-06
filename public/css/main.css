@@ -1,0 +1,23 @@
+h1 {
+  color: blue;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.image-column {
+  padding: 10px;
+}
+
+.book-image {
+  min-height: 239px;
+  min-width: 150px;
+  white-space: nowrap;
+  text-indent: 110%;
+  overflow: hidden;
+  box-sizing: border-box;
+  box-shadow: inset 0 0 0 1px rgba(221,238,255,.35);
+  border-radius: 4px;
+}
