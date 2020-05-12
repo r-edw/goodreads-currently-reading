@@ -15,3 +15,7 @@ Also uses [node-cache](https://www.npmjs.com/package/node-cache) in the express 
 - Could display additional author information.
 - Style it up!
 - Goodreads doesn't have rights to return all cover images via their developer API ([reference](https://www.goodreads.com/topic/show/18208456-api-issue---cover-images)). Could possibly use the ISBN code if no cover image is returned from Goodreads and use the [OpenLibrary](https://openlibrary.org/dev/docs/api/covers) cover API instead.
+
+### Example screenshot
+
+![Screenshot](/example_screen.png?raw=true "Example")
