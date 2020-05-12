@@ -5,9 +5,33 @@
  </head>
  <body>
     <link href="/static/css/main.css" rel="stylesheet" type="text/css">
-     <h1>
-        Currently Reading
-     </h1>
+    <header>
+      <nav>
+        <h1>
+          Currently Reading
+        </h1>
+        <ul class="nav-list">
+          <li class="nav-list-item">
+            <a 
+              href="https://github.com/r-edw/goodreads-currently-reading"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Github
+            </a>
+          </li>
+          <li class="nav-list-item">
+            <a 
+              href="https://twitter.com/RyunEdwurds"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Twitter
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
      <main>
        <section class="content-wrapper">
           <div class="image-column">
@@ -16,13 +40,30 @@
           <div>
             <h2 class="title">Title</h2>
             <h3 class="author"><a>Author</a></h3>
+            <p>Average Rating: <span class="rating">N/A</span></p>
             <p class="description">Description</p>
-            <div>Meta stuff</div>
+            <a 
+              class="goodreads-view"
+              href="https://www.goodreads.com"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              View on Goodreads
+            </a>
           </div>
        </section>
      </main>
      <footer>
-       Copyright stuff go here
+       <div class="footer-container">
+          Powered by 
+          <a 
+            href="https://www.goodreads.com"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Goodreads
+          </a>
+       </div>
      </footer>
  </body>
 <script>
@@ -32,6 +73,7 @@
         const book = data.message[0].book[0];
         document.querySelector('.description').innerHTML = book.description[0];
         document.querySelector('.title').textContent = book.title[0];
+        document.querySelector('.rating').textContent = book.average_rating[0];
 
         const authorTag = document.querySelector('.author > a');
         const author = book.authors[0].author[0];
@@ -39,7 +81,14 @@
         authorTag.setAttribute('href', author.link[0]);
         authorTag.setAttribute('target', '_blank');
 
-        document.querySelector('.book-image').setAttribute('src', book.image_url);
+        const viewTag = document.querySelector('.goodreads-view');
+        viewTag.setAttribute('href', book.link[0]);
+
+        const image = book.image_url[0].replace('._SX98_', '');
+
+        console.log(image);
+
+        document.querySelector('.book-image').setAttribute('src', image);
       })
     })
 </script>
